@@ -40,43 +40,48 @@ const About = () => {
                         </motion.div>
                     </div>
 
-                    {/* Right Column: Experience Card */}
-                    <div className="w-full md:w-1/2 mt-12 md:mt-0">
+                    {/* Right Column: Profile Photo */}
+                    <div className="w-full md:w-1/2 mt-12 md:mt-0 flex justify-center md:justify-end">
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 p-8 rounded-2xl relative overflow-hidden group hover:border-gray-300 dark:hover:border-white/20 transition-colors shadow-sm"
+                            className="relative group"
                         >
-                            {/* Decorative Gradient */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 blur-[50px] rounded-full pointer-events-none"></div>
+                            {/* Outer glow ring */}
+                            <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-gray-700/30 via-gray-400/10 to-transparent dark:from-white/20 dark:via-white/10 dark:to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 scale-95 group-hover:scale-105 pointer-events-none"></div>
 
-                            <div className="flex justify-between items-start mb-6">
-                                <div>
-                                    <h4 className="text-2xl font-bold text-gray-900 dark:text-white">Freelance Developer</h4>
-                                    <p className="text-gray-500 dark:text-gray-400">Kalol, Gujarat</p>
-                                </div>
-                                <div className="px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold uppercase tracking-wider shadow-[0_0_10px_rgba(56,189,248,0.2)]">
-                                    Current
+                            {/* Photo frame */}
+                            <div className="relative w-72 h-80 sm:w-80 sm:h-88 md:w-96 md:h-[26rem] lg:w-[26rem] lg:h-[30rem] rounded-3xl overflow-hidden
+                                border border-gray-200 dark:border-white/10
+                                shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]
+                                transition-all duration-500 ease-out
+                                group-hover:shadow-[0_30px_80px_-15px_rgba(0,0,0,0.4)] dark:group-hover:shadow-[0_30px_80px_-15px_rgba(255,255,255,0.12)]
+                                group-hover:-translate-y-2 group-hover:scale-[1.02]"
+                            >
+                                <img
+                                    src="/profile.jpg"
+                                    alt="Manan Patel"
+                                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                                />
+                                {/* Shimmer gradient on hover */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                                {/* Live dot */}
+                                <div className="absolute bottom-4 right-4 flex items-center gap-2 bg-black/40 dark:bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                    <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                                    <span className="text-white text-xs font-medium">Available</span>
                                 </div>
                             </div>
 
-                            <p className="font-mono text-sm text-gray-500 mb-6">2025 - Present</p>
-
-                            <ul className="space-y-4 text-gray-700 dark:text-gray-300">
-                                <li className="flex gap-3">
-                                    <span className="text-blue-600 dark:text-accent mt-1">▹</span>
-                                    Built an in-house collaboration web app using the MERN stack.
-                                </li>
-                                <li className="flex gap-3">
-                                    <span className="text-blue-600 dark:text-accent mt-1">▹</span>
-                                    Optimized data retrieval speeds by 30% through efficient API integrations.
-                                </li>
-                                <li className="flex gap-3">
-                                    <span className="text-blue-600 dark:text-accent mt-1">▹</span>
-                                    Delivered responsive, cross-browser compatible websites for diverse clients.
-                                </li>
-                            </ul>
+                            {/* Floating info badge */}
+                            <motion.div
+                                animate={{ y: [0, -8, 0] }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute -bottom-5 -left-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-3 shadow-xl"
+                            >
+                                <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Full Stack</p>
+                                <p className="text-sm font-bold text-gray-900 dark:text-white">Developer ✦</p>
+                            </motion.div>
                         </motion.div>
                     </div>
                 </div>
