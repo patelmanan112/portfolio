@@ -56,8 +56,8 @@ const Home = () => {
                 </div>
 
                 <div className="overflow-hidden mb-6">
-                    <motion.h1 variants={item} className="text-7xl md:text-[12rem] font-black text-slate-900 dark:text-white tracking-tighter leading-[0.85]">
-                        MANAN <br /><span className="text-transparent bg-clip-text bg-gradient-to-br from-slate-400 to-slate-100 italic font-serif font-light">PATEL</span>
+                    <motion.h1 variants={item} className="text-5xl md:text-8xl font-black text-slate-900 dark:text-white tracking-tighter leading-tight flex flex-wrap justify-center items-baseline gap-x-4">
+                        MANAN <span className="text-slate-500 dark:text-slate-400 italic font-serif font-light">PATEL</span>
                     </motion.h1>
                 </div>
 
