@@ -37,11 +37,11 @@ const Navbar = () => {
             ${scrolled ? 'dark:bg-[#050505]/80 bg-white/80 shadow-2xl md:scale-[0.98]' : 'dark:bg-transparent bg-white/60'}
         `}
             >
-                {/* Logo */}
+                {/* Minimalist Logo */}
                 <div className="flex items-center group cursor-none" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 flex items-center justify-center shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-                        <span className="text-white dark:text-black font-serif font-bold text-lg tracking-tighter">MP</span>
-                    </div>
+                    <span className="text-2xl md:text-3xl font-black tracking-tighter text-gray-900 dark:text-white group-hover:opacity-70 transition-opacity duration-300" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                        M<span className="text-gray-400 dark:text-gray-500">P.</span>
+                    </span>
                 </div>
 
                 {/* Desktop Nav */}

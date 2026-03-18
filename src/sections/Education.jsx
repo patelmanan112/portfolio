@@ -88,7 +88,7 @@ const Education = () => {
                                 <div className={`ml-20 md:ml-0 ${index % 2 === 0 ? 'md:pr-[52%]' : 'md:pl-[52%]'}`}>
                                     <motion.div
                                         whileHover={{ scale: 1.02 }}
-                                        className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-white/30 transition-all duration-500 overflow-hidden hover-trigger cursor-default"
+                                        className="group relative bg-white/40 dark:bg-white/[0.02] backdrop-blur-3xl rounded-[2.5rem] p-10 border border-slate-200 dark:border-white/5 hover:border-blue-500/30 dark:hover:border-white/20 transition-all duration-700 overflow-hidden hover-trigger cursor-none shadow-sm hover:shadow-[0_30px_80px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_30px_80px_rgba(0,0,0,0.4)]"
                                     >
                                         {/* Animated gradient overlay */}
                                         <div
@@ -123,7 +123,7 @@ const Education = () => {
                                             <div className="flex items-center gap-3 mb-3">
                                                 <FaGraduationCap className="text-xl" style={{ color: edu.color }} />
                                                 <div>
-                                                    <p className="text-xl font-bold text-gray-700 dark:text-gray-200">{edu.degree}</p>
+                                                    <p className="text-xl font-bold text-gray-800 dark:text-gray-200">{edu.degree}</p>
                                                     <p className="text-blue-600 dark:text-blue-400 font-medium">{edu.field}</p>
                                                 </div>
                                             </div>
@@ -137,7 +137,7 @@ const Education = () => {
                                             {/* Description */}
                                             <div className="flex items-start gap-3 mt-6 pt-6 border-t border-white/10">
                                                 <FaBook className="text-gray-500 mt-1 shrink-0" />
-                                                <p className="text-gray-400 leading-relaxed">{edu.description}</p>
+                                                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{edu.description}</p>
                                             </div>
                                         </div>
 

@@ -56,7 +56,7 @@ const Contact = () => {
         <section id="contact" className="min-h-screen bg-white dark:bg-black relative flex flex-col justify-between pt-32 pb-10 overflow-hidden transition-colors duration-500">
 
             {/* Background Grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#eee_1px,transparent_1px),linear-gradient(to_bottom,#eee_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-40 pointer-events-none"></div>
 
             <div className="max-w-[90%] mx-auto w-full z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32">
@@ -130,7 +130,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     placeholder="What's your name?"
                                     required
-                                    className="w-full bg-transparent border-b border-gray-200 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-gray-800 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors"
+                                    className="w-full bg-transparent border-b border-gray-300 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-700 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors"
                                 />
                                 <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-900 dark:bg-white transition-all duration-500 group-hover:w-full"></span>
                             </div>
@@ -142,7 +142,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     placeholder="Your email address"
                                     required
-                                    className="w-full bg-transparent border-b border-gray-200 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-gray-800 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors"
+                                    className="w-full bg-transparent border-b border-gray-300 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-700 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors"
                                 />
                                 <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-900 dark:bg-white transition-all duration-500 group-hover:w-full"></span>
                             </div>
@@ -154,7 +154,7 @@ const Contact = () => {
                                     rows="1"
                                     placeholder="Tell me about your project"
                                     required
-                                    className="w-full bg-transparent border-b border-gray-200 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-gray-800 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors resize-none"
+                                    className="w-full bg-transparent border-b border-gray-300 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-700 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors resize-none"
                                 ></textarea>
                                 <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-900 dark:bg-white transition-all duration-500 group-hover:w-full"></span>
                             </div>

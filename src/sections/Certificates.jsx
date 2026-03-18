@@ -34,7 +34,7 @@ const Certificates = () => {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.2 }}
                             whileHover={{ scale: 1.02 }}
-                            className="group relative bg-white dark:bg-secondary rounded-xl overflow-hidden border border-gray-200 dark:border-white/10 hover-trigger shadow-sm hover:shadow-md transition-shadow"
+                            className="group relative bg-[#f9f9f9] dark:bg-secondary rounded-xl overflow-hidden border border-gray-200 dark:border-white/10 hover-trigger shadow-sm hover:shadow-md transition-shadow"
                         >
                             <div className="aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
                                 <img

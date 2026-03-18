@@ -37,10 +37,9 @@ const Home = () => {
     return (
         <section id="home" ref={ref} className="h-screen flex items-center justify-center relative overflow-hidden">
             {/* Dynamic Background */}
-            <div className="absolute inset-0 w-full h-full bg-gray-50 dark:bg-primary z-0">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-200/40 dark:bg-purple-900/30 rounded-full blur-[120px] animate-blob mix-blend-multiply dark:mix-blend-screen"></div>
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-200/30 dark:bg-blue-900/20 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-multiply dark:mix-blend-screen"></div>
-                <div className="absolute top-[40%] left-[40%] w-[40%] h-[40%] bg-gray-300/20 dark:bg-white/5 rounded-full blur-[120px] animate-blob animation-delay-4000 mix-blend-multiply dark:mix-blend-screen"></div>
+            <div className="absolute inset-0 w-full h-full bg-[#fdfdfd] dark:bg-[#030303] z-0">
+                <div className="absolute top-[-15%] left-[-10%] w-[50%] h-[50%] bg-blue-500/10 dark:bg-blue-600/10 rounded-full blur-[150px] animate-blob"></div>
+                <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] bg-purple-500/10 dark:bg-purple-600/10 rounded-full blur-[150px] animate-blob animation-delay-2000"></div>
             </div>
 
             <motion.div
@@ -57,8 +56,8 @@ const Home = () => {
                 </div>
 
                 <div className="overflow-hidden mb-6">
-                    <motion.h1 variants={item} className="text-6xl md:text-9xl font-bold text-gray-900 dark:text-white tracking-tighter">
-                        MANAN <span className="italic font-serif font-light text-gray-600 dark:text-gray-400">PATEL</span>
+                    <motion.h1 variants={item} className="text-7xl md:text-[12rem] font-black text-slate-900 dark:text-white tracking-tighter leading-[0.85]">
+                        MANAN <br /><span className="text-transparent bg-clip-text bg-gradient-to-br from-slate-400 to-slate-100 italic font-serif font-light">PATEL</span>
                     </motion.h1>
                 </div>
 
@@ -73,15 +72,15 @@ const Home = () => {
                         href="/resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group relative px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover-trigger cursor-none shadow-[0_0_30px_-5px_rgba(0,0,0,0.3)] dark:shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)] hover:shadow-[0_0_40px_-5px_rgba(0,0,0,0.5)] dark:hover:shadow-[0_0_40px_-5px_rgba(255,255,255,0.5)]"
+                        className="group relative px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95 cursor-none hover-trigger"
                     >
-                        <span className="relative z-10 flex items-center justify-center gap-2">
+                        <span className="relative z-10 flex items-center justify-center gap-3 text-lg">
                             View Resume
-                            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            <svg className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
                         </span>
-                        <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-gray-800 to-black dark:from-gray-100 dark:to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </a>
                 </motion.div>
 

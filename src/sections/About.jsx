@@ -20,9 +20,9 @@ const About = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8 leading-tight"
+                            className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-none"
                         >
-                            Developing impactful solutions with code.
+                            Developing <br /><span className="text-blue-500 italic font-serif font-light">impactful</span> solutions.
                         </motion.h3>
 
                         <motion.div
