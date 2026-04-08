@@ -69,7 +69,7 @@ const Home = () => {
 
                 <motion.div variants={item} className="flex justify-center gap-6 mt-4">
                     <a
-                        href="/resume.pdf"
+                        href="https://drive.google.com/file/d/1ENDMJp33vwitrZ3A1uVUc2w28CAD1HxC/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group relative px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95 cursor-none hover-trigger"

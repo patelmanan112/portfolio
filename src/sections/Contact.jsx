@@ -25,8 +25,8 @@ const Contact = () => {
 
         emailjs
             .send(
-                'service_aez74f9', // Add your Service ID here
-                'template_ag9ciur', // Add your Template ID here
+                'service_aez74f9',
+                'template_ag9ciur',
                 {
                     from_name: form.name,
                     to_name: "Manan Patel",
@@ -34,7 +34,7 @@ const Contact = () => {
                     to_email: "manan.patel.cg@gmail.com",
                     message: form.message,
                 },
-                'Qb_fFG-ySA9dwuy1F' // Add your Public Key here
+                'Qb_fFG-ySA9dwuy1F'
             )
             .then(
                 () => {
@@ -174,8 +174,7 @@ const Contact = () => {
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, y: 10 }}
-                                            className={`absolute -top-16 left-0 flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-bold ${status.type === 'success' ? 'bg-green-500' : 'bg-red-500'
-                                                }`}
+                                            className={`absolute -top-16 left-0 flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-bold ${status.type === 'success' ? 'bg-green-500' : 'bg-red-500'}`}
                                         >
                                             {status.type === 'success' ? <FaCheckCircle /> : <FaExclamationCircle />}
                                             {status.message}
@@ -190,7 +189,7 @@ const Contact = () => {
             </div>
 
             {/* Footer styled bottom bar */}
-            <div className="mt-autow-full px-8 py-8 flex justify-between items-end border-t border-gray-200 dark:border-white/10 mt-20">
+            <div className="mt-auto w-full px-8 py-8 flex justify-between items-end border-t border-gray-200 dark:border-white/10 mt-20">
                 <div className="flex gap-8">
                     <a href="https://www.instagram.com/man_an0112/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors uppercase text-sm tracking-widest">Instagram</a>
                     <a href="https://x.com/man_an0112" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors uppercase text-sm tracking-widest">Twitter</a>
@@ -204,4 +203,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
