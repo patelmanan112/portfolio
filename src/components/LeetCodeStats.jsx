@@ -1,5 +1,27 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
+
+function AnimatedNumber({ value, startFromBigger = false, className = "" }) {
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true, margin: "-50px" });
+    
+    // For ranking, we start from a visually "worse" (higher) number
+    const startValue = startFromBigger ? value + 500000 : 0;
+    const motionValue = useMotionValue(startValue);
+    const rounded = useTransform(motionValue, (latest) => Math.round(latest).toLocaleString());
+
+    useEffect(() => {
+        if (inView) {
+            const controls = animate(motionValue, value, {
+                duration: 2.5,
+                ease: "easeOut",
+            });
+            return controls.stop;
+        }
+    }, [inView, value, motionValue]);
+
+    return <motion.span ref={ref} className={`inline-block ${className}`}>{rounded}</motion.span>;
+}
 
 const LeetCodeStats = () => {
     const [stats, setStats] = useState(null);
@@ -71,28 +93,28 @@ const LeetCodeStats = () => {
                         {/* Total Solved Card */}
                         <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
                             <span className="text-gray-500 dark:text-gray-400 text-sm font-bold uppercase tracking-widest mb-2">Total Solved</span>
-                            <span className="text-5xl font-black text-gray-900 dark:text-white group-hover:text-[#FFA116] transition-colors">{stats.totalSolved}</span>
+                            <AnimatedNumber value={stats.totalSolved} className="text-5xl font-black text-gray-900 dark:text-white group-hover:text-[#FFA116] transition-colors" />
                             <span className="text-xs text-gray-400 mt-2 block">out of {stats.totalQuestions}</span>
                         </motion.div>
 
                         {/* Easy Card */}
                         <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
                             <span className="text-[#00b8a3] text-sm font-bold uppercase tracking-widest mb-2">Easy</span>
-                            <span className="text-5xl font-black text-[#00b8a3] group-hover:scale-110 transition-transform">{stats.easySolved}</span>
+                            <AnimatedNumber value={stats.easySolved} className="text-5xl font-black text-[#00b8a3] group-hover:scale-110 transition-transform" />
                             <span className="text-xs text-gray-400 mt-2 block">out of {stats.totalEasy}</span>
                         </motion.div>
 
                         {/* Medium Card */}
                         <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
                             <span className="text-[#ffc01e] text-sm font-bold uppercase tracking-widest mb-2">Medium</span>
-                            <span className="text-5xl font-black text-[#ffc01e] group-hover:scale-110 transition-transform">{stats.mediumSolved}</span>
+                            <AnimatedNumber value={stats.mediumSolved} className="text-5xl font-black text-[#ffc01e] group-hover:scale-110 transition-transform" />
                             <span className="text-xs text-gray-400 mt-2 block">out of {stats.totalMedium}</span>
                         </motion.div>
 
                         {/* Hard Card */}
                         <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
                             <span className="text-[#ff375f] text-sm font-bold uppercase tracking-widest mb-2">Hard</span>
-                            <span className="text-5xl font-black text-[#ff375f] group-hover:scale-110 transition-transform">{stats.hardSolved}</span>
+                            <AnimatedNumber value={stats.hardSolved} className="text-5xl font-black text-[#ff375f] group-hover:scale-110 transition-transform" />
                             <span className="text-xs text-gray-400 mt-2 block">out of {stats.totalHard}</span>
                         </motion.div>
 
@@ -104,7 +126,11 @@ const LeetCodeStats = () => {
                             </div>
                             <div className="flex items-baseline gap-2">
                                 <span className="text-[#FFA116] text-xl font-bold">#</span>
-                                <span className="text-4xl md:text-5xl font-black text-[#FFA116] tracking-tighter">{stats.ranking.toLocaleString()}</span>
+                                <AnimatedNumber 
+                                    value={stats.ranking} 
+                                    startFromBigger={true} 
+                                    className="text-4xl md:text-5xl font-black text-[#FFA116] tracking-tighter" 
+                                />
                             </div>
                         </motion.div>
                     </motion.div>

@@ -1,5 +1,27 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
+
+function AnimatedNumber({ value, startFromBigger = false, className = "" }) {
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true, margin: "-50px" });
+    
+    // For ranking/downwards, start visually higher
+    const startValue = startFromBigger ? value + 500 : 0;
+    const motionValue = useMotionValue(startValue);
+    const rounded = useTransform(motionValue, (latest) => Math.round(latest).toLocaleString());
+
+    useEffect(() => {
+        if (inView) {
+            const controls = animate(motionValue, value, {
+                duration: 2.5,
+                ease: "easeOut",
+            });
+            return controls.stop;
+        }
+    }, [inView, value, motionValue]);
+
+    return <motion.span ref={ref} className={`inline-block ${className}`}>{rounded}</motion.span>;
+}
 import { GitHubCalendar } from 'react-github-calendar';
 import { FaBookBookmark, FaStar } from 'react-icons/fa6';
 import { BiGitCommit, BiCodeAlt } from 'react-icons/bi';
@@ -115,14 +137,16 @@ const GithubStats = () => {
                 >
                     {[
                         { icon: <FaBookBookmark className="text-purple-400" size={20} />, label: "Repositories", value: stats.repoCount, border: "border-purple-500/30" },
-                        { icon: <BiGitCommit className="text-blue-400" size={24} />, label: "Contributions", value: "500+", border: "border-blue-500/30" },
+                        { icon: <BiGitCommit className="text-blue-400" size={24} />, label: "Contributions", value: 500, suffix: "+", border: "border-blue-500/30" },
                         { icon: <MdBolt className="text-yellow-400" size={24} />, label: "Activity Events", value: stats.activityEvents, border: "border-yellow-500/30" },
                         { icon: <BiCodeAlt className="text-green-400" size={22} />, label: "Languages", value: stats.languagesCount, border: "border-green-500/30" }
                     ].map((stat, idx) => (
                         <motion.div key={idx} variants={item} className={`bg-[#121214] p-6 rounded-2xl border ${stat.border}`}>
                             <div className="flex items-center gap-3 mb-2">
                                 {stat.icon}
-                                <span className="text-3xl font-bold text-white">{loading ? '-' : stat.value}</span>
+                                <span className="text-3xl font-bold text-white">
+                                    {loading ? '-' : <><AnimatedNumber value={stat.value} />{stat.suffix || ""}</>}
+                                </span>
                             </div>
                             <span className="text-sm text-gray-400 pl-8">{stat.label}</span>
                         </motion.div>
