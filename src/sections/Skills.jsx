@@ -50,7 +50,7 @@ const SkillCard = ({ skill, index }) => (
         viewport={{ once: true }}
         transition={{ delay: index * 0.02, duration: 0.4 }}
         whileHover={{ y: -5, transition: { duration: 0.2 } }}
-        className="group relative flex flex-col items-center justify-center p-6 rounded-2xl bg-white/50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5 backdrop-blur-md transition-all duration-300 hover:border-blue-500/30 dark:hover:border-white/20 hover:shadow-xl shadow-sm"
+        className="hover-trigger cursor-none group relative flex flex-col items-center justify-center p-6 rounded-2xl bg-white/50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5 backdrop-blur-md transition-all duration-300 hover:border-blue-500/30 dark:hover:border-white/20 hover:shadow-xl shadow-sm"
     >
         <div 
             className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"

@@ -34,7 +34,7 @@ const Navbar = () => {
             >
                 <div className={`w-full max-w-6xl backdrop-blur-md border dark:border-white/10 border-gray-200 rounded-full px-6 py-3 md:px-8 flex justify-between items-center transition-all duration-300 ${scrolled ? 'dark:bg-[#050505]/80 bg-white/80 shadow-2xl md:scale-[0.98]' : 'dark:bg-transparent bg-white/60'}`}>
                     {/* Logo */}
-                    <div className="flex items-center group cursor-none">
+                    <div className="hover-trigger cursor-none flex items-center group">
                         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                             <span className="text-2xl md:text-3xl font-black tracking-tighter text-gray-900 dark:text-white group-hover:opacity-70 transition-opacity duration-300" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
                                 M<span className="text-gray-400 dark:text-gray-500">P.</span>
@@ -65,7 +65,7 @@ const Navbar = () => {
                         <span className="text-gray-900 dark:text-white text-sm font-bold tracking-wide">MENU</span>
                         <button
                             onClick={() => setMobileOpen(!mobileOpen)}
-                            className="flex flex-col gap-[5px] justify-center items-center w-8 h-8 cursor-pointer"
+                            className="hover-trigger cursor-none flex flex-col gap-[5px] justify-center items-center w-8 h-8"
                             aria-label="Toggle menu"
                         >
                             <motion.span animate={{ rotate: mobileOpen ? 45 : 0, y: mobileOpen ? 7 : 0 }} className="block w-5 h-[2px] bg-gray-900 dark:bg-white rounded-full origin-center" />
@@ -96,7 +96,7 @@ const Navbar = () => {
                                 <Link
                                     to={link.to}
                                     onClick={() => setMobileOpen(false)}
-                                    className={`text-4xl font-black tracking-tighter transition-colors duration-300 cursor-pointer ${
+                                    className={`hover-trigger cursor-none text-4xl font-black tracking-tighter transition-colors duration-300 ${
                                         location.pathname === link.to
                                             ? 'text-black dark:text-white'
                                             : 'text-gray-900 dark:text-white hover:text-gray-500 dark:hover:text-gray-300'

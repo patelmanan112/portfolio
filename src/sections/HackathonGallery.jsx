@@ -147,10 +147,10 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor }) => {
                 </AnimatePresence>
 
                 {/* Arrow buttons */}
-                <button onClick={prev} className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/10 transition-all opacity-0 group-hover:opacity-100">
+                <button onClick={prev} className="hover-trigger cursor-none absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/10 transition-all opacity-0 group-hover:opacity-100">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/></svg>
                 </button>
-                <button onClick={next} className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/10 transition-all opacity-0 group-hover:opacity-100">
+                <button onClick={next} className="hover-trigger cursor-none absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/10 transition-all opacity-0 group-hover:opacity-100">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
                 </button>
             </div>
@@ -164,7 +164,7 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor }) => {
                     <button
                         key={i}
                         onClick={() => goTo(i)}
-                        className={`relative w-14 h-10 rounded-lg overflow-hidden border-2 transition-all duration-300 ${i === current ? borderColor.replace('border-', 'border-') + ' scale-105' : 'border-white/10 opacity-50 hover:opacity-80'}`}
+                        className={`hover-trigger cursor-none relative w-14 h-10 rounded-lg overflow-hidden border-2 transition-all duration-300 ${i === current ? borderColor.replace('border-', 'border-') + ' scale-105' : 'border-white/10 opacity-50 hover:opacity-80'}`}
                         style={{ borderColor: i === current ? undefined : undefined }}
                     >
                         {p.isPending ? (
@@ -189,7 +189,7 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor }) => {
             {/* Dot indicators */}
             <div className="flex gap-2 justify-center mt-1">
                 {photos.map((_, i) => (
-                    <button key={i} onClick={() => goTo(i)} className={`rounded-full transition-all duration-300 ${i === current ? 'w-6 h-2' : 'w-2 h-2 opacity-40'}`}
+                    <button key={i} onClick={() => goTo(i)} className={`hover-trigger cursor-none rounded-full transition-all duration-300 ${i === current ? 'w-6 h-2' : 'w-2 h-2 opacity-40'}`}
                         style={{ background: i === current ? (color === 'amber' ? '#f59e0b' : '#8b5cf6') : 'white' }}
                     />
                 ))}
@@ -239,7 +239,7 @@ const HackathonGallery = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.7, delay: idx * 0.15 }}
-                            className={`relative rounded-3xl border ${h.borderColor} bg-gradient-to-br ${h.gradientFrom} via-[#0f0f0f] ${h.gradientTo} p-6 md:p-8 overflow-hidden group`}
+                            className={`hover-trigger cursor-none relative rounded-3xl border ${h.borderColor} bg-gradient-to-br ${h.gradientFrom} via-[#0f0f0f] ${h.gradientTo} p-6 md:p-8 overflow-hidden group`}
                         >
                             {/* Corner edition number */}
                             <div className="absolute top-6 right-8 text-7xl font-black text-white/4 select-none leading-none">

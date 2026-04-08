@@ -45,7 +45,7 @@ const ProjectCard = ({ project }) => {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="bg-[#0e0e0e] hover:bg-[#131313] transition-colors border border-white/5 rounded-2xl p-4 flex flex-col group relative"
+      className="hover-trigger cursor-none bg-[#0e0e0e] hover:bg-[#131313] transition-colors border border-white/5 rounded-2xl p-4 flex flex-col group relative"
     >
       {/* Project Image */}
       <div className="w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#1a1a1a] mb-5 border border-white/5 relative">

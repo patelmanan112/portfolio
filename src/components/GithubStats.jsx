@@ -141,7 +141,7 @@ const GithubStats = () => {
                         { icon: <MdBolt className="text-yellow-400" size={24} />, label: "Activity Events", value: stats.activityEvents, border: "border-yellow-500/30" },
                         { icon: <BiCodeAlt className="text-green-400" size={22} />, label: "Languages", value: stats.languagesCount, border: "border-green-500/30" }
                     ].map((stat, idx) => (
-                        <motion.div key={idx} variants={item} className={`bg-[#121214] p-6 rounded-2xl border ${stat.border}`}>
+                        <motion.div key={idx} variants={item} className={`hover-trigger cursor-none bg-[#121214] p-6 rounded-2xl border ${stat.border}`}>
                             <div className="flex items-center gap-3 mb-2">
                                 {stat.icon}
                                 <span className="text-3xl font-bold text-white">
@@ -195,7 +195,7 @@ const GithubStats = () => {
                                     href={repo.html_url}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="group pb-5 border-b border-white/5 border-dashed last:border-0 last:pb-0"
+                                    className="hover-trigger cursor-none group pb-5 border-b border-white/5 border-dashed last:border-0 last:pb-0"
                                 >
                                     <h4 className="text-md font-bold text-gray-200 group-hover:text-blue-400 transition-colors mb-1 truncate">
                                         {repo.name}

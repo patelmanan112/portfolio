@@ -2,79 +2,134 @@ import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const Cursor = () => {
+    // Exact mouse position for the small dot
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
 
-    // Ultra-smooth spring physics
-    const springConfig = { damping: 30, stiffness: 200 };
-    const cursorXSpring = useSpring(cursorX, springConfig);
-    const cursorYSpring = useSpring(cursorY, springConfig);
+    // Smooth spring for the outer brackets
+    const springConfig = { damping: 22, stiffness: 180 };
+    const bracketX = useSpring(cursorX, springConfig);
+    const bracketY = useSpring(cursorY, springConfig);
 
-    const [isHovered, setIsHovered] = useState(false);
+    const [hovered, setHovered] = useState(null); // { width, height }
 
     useEffect(() => {
+        let currentTarget = null;
+
+        const snapToTarget = (el) => {
+            const rect = el.getBoundingClientRect();
+            bracketX.set(rect.left + rect.width / 2);
+            bracketY.set(rect.top + rect.height / 2);
+            setHovered({ width: rect.width, height: rect.height });
+        };
+
         const moveCursor = (e) => {
-            cursorX.set(e.clientX - 16);
-            cursorY.set(e.clientY - 16);
+            cursorX.set(e.clientX);
+            cursorY.set(e.clientY);
+
+            if (currentTarget) {
+                snapToTarget(currentTarget);
+            } else {
+                bracketX.set(e.clientX);
+                bracketY.set(e.clientY);
+            }
         };
 
         const handleMouseOver = (e) => {
-            const target = e.target;
-            // Check if element is interactive
-            if (
-                target.tagName === 'A' ||
-                target.tagName === 'BUTTON' ||
-                target.closest('.hover-trigger') ||
-                target.closest('a') ||
-                target.closest('button') ||
-                target.tagName === 'INPUT' ||
-                target.tagName === 'TEXTAREA'
-            ) {
-                setIsHovered(true);
-            } else {
-                setIsHovered(false);
+            // Prefer closest .hover-trigger ancestor
+            const trigger = e.target.closest('.hover-trigger');
+            if (trigger && trigger !== currentTarget) {
+                currentTarget = trigger;
+                snapToTarget(trigger);
+                return;
             }
+            if (!trigger) {
+                // Fall back to native interactive elements
+                const native = e.target.closest('a, button, input, textarea, select');
+                if (native && native !== currentTarget) {
+                    currentTarget = native;
+                    snapToTarget(native);
+                }
+            }
+        };
+
+        const handleMouseOut = (e) => {
+            const leaving =
+                e.target.closest('.hover-trigger') ||
+                e.target.closest('a, button, input, textarea, select');
+            if (leaving && leaving === currentTarget) {
+                // Only release if we truly left the element (not just moved to a child)
+                if (!leaving.contains(e.relatedTarget)) {
+                    currentTarget = null;
+                    setHovered(null);
+                }
+            }
+        };
+
+        const handleScroll = () => {
+            if (currentTarget) snapToTarget(currentTarget);
         };
 
         window.addEventListener('mousemove', moveCursor);
         window.addEventListener('mouseover', handleMouseOver);
+        window.addEventListener('mouseout', handleMouseOut);
+        window.addEventListener('scroll', handleScroll, true);
 
         return () => {
             window.removeEventListener('mousemove', moveCursor);
             window.removeEventListener('mouseover', handleMouseOver);
+            window.removeEventListener('mouseout', handleMouseOut);
+            window.removeEventListener('scroll', handleScroll, true);
         };
-    }, [cursorX, cursorY]);
+    }, [cursorX, cursorY, bracketX, bracketY]);
+
+    const pad = 14;
+    const bracketW = hovered ? hovered.width + pad : 40;
+    const bracketH = hovered ? hovered.height + pad : 40;
+    const isLocked = !!hovered;
 
     return (
         <>
-            {/* Main cursor circle */}
+            {/* Outer Brackets */}
             <motion.div
-                className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] hidden md:block border-2 border-white"
+                className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:block"
                 style={{
-                    translateX: cursorXSpring,
-                    translateY: cursorYSpring,
+                    x: bracketX,
+                    y: bracketY,
                     mixBlendMode: 'difference',
                 }}
-                animate={{
-                    scale: isHovered ? 2 : 1,
-                    opacity: isHovered ? 0.5 : 1,
-                }}
-                transition={{
-                    scale: { duration: 0.3, ease: "easeOut" },
-                    opacity: { duration: 0.3 }
-                }}
-            />
+            >
+                <motion.div
+                    className="relative"
+                    animate={{
+                        width: bracketW,
+                        height: bracketH,
+                        rotate: isLocked ? 0 : 45,
+                        opacity: isLocked ? 1 : 0.85,
+                    }}
+                    transition={{ type: 'spring', stiffness: 160, damping: 22 }}
+                    style={{ x: '-50%', y: '-50%' }}
+                >
+                    {/* Camera-focus corner brackets */}
+                    <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-white rounded-tl-sm" />
+                    <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-white rounded-tr-sm" />
+                    <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-white rounded-bl-sm" />
+                    <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-white rounded-br-sm" />
+                </motion.div>
+            </motion.div>
 
-            {/* Inner dot */}
+            {/* Inner dot — always exact mouse position */}
             <motion.div
                 className="fixed top-0 left-0 w-1.5 h-1.5 bg-white rounded-full pointer-events-none z-[9999] hidden md:block"
                 style={{
-                    translateX: cursorX,
-                    translateY: cursorY,
-                    left: '6.25px',
-                    top: '6.25px',
+                    x: cursorX,
+                    y: cursorY,
+                    translateX: '-50%',
+                    translateY: '-50%',
                     mixBlendMode: 'difference',
                 }}
+                animate={{ scale: isLocked ? 0.6 : 1 }}
+                transition={{ duration: 0.15 }}
             />
         </>
     );

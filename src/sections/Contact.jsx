@@ -122,7 +122,7 @@ const Contact = () => {
                         className="flex flex-col justify-end"
                     >
                         <form ref={formRef} onSubmit={handleSubmit} className="space-y-12">
-                            <div className="group relative">
+                            <div className="hover-trigger cursor-none group relative">
                                 <input
                                     type="text"
                                     name="name"
@@ -130,11 +130,11 @@ const Contact = () => {
                                     onChange={handleChange}
                                     placeholder="What's your name?"
                                     required
-                                    className="w-full bg-transparent border-b border-gray-300 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-700 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors"
+                                    className="w-full bg-transparent border-b border-gray-300 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-700 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors cursor-none"
                                 />
                                 <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-900 dark:bg-white transition-all duration-500 group-hover:w-full"></span>
                             </div>
-                            <div className="group relative">
+                            <div className="hover-trigger cursor-none group relative">
                                 <input
                                     type="email"
                                     name="email"
@@ -142,11 +142,11 @@ const Contact = () => {
                                     onChange={handleChange}
                                     placeholder="Your email address"
                                     required
-                                    className="w-full bg-transparent border-b border-gray-300 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-700 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors"
+                                    className="w-full bg-transparent border-b border-gray-300 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-700 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors cursor-none"
                                 />
                                 <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-900 dark:bg-white transition-all duration-500 group-hover:w-full"></span>
                             </div>
-                            <div className="group relative">
+                            <div className="hover-trigger cursor-none group relative">
                                 <textarea
                                     name="message"
                                     value={form.message}
@@ -154,7 +154,7 @@ const Contact = () => {
                                     rows="1"
                                     placeholder="Tell me about your project"
                                     required
-                                    className="w-full bg-transparent border-b border-gray-300 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-700 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors resize-none"
+                                    className="w-full bg-transparent border-b border-gray-300 dark:border-gray-800 py-6 text-2xl md:text-3xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-700 focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors resize-none cursor-none"
                                 ></textarea>
                                 <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-900 dark:bg-white transition-all duration-500 group-hover:w-full"></span>
                             </div>
@@ -163,7 +163,7 @@ const Contact = () => {
                                 <button
                                     type="submit"
                                     disabled={loading}
-                                    className="text-gray-900 dark:text-white text-xl uppercase tracking-widest font-bold border border-gray-200 dark:border-white/20 rounded-full px-12 py-6 hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-500 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-4"
+                                    className="hover-trigger cursor-none text-gray-900 dark:text-white text-xl uppercase tracking-widest font-bold border border-gray-200 dark:border-white/20 rounded-full px-12 py-6 hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-500 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-4"
                                 >
                                     {loading ? 'Sending...' : 'Send Message'}
                                 </button>
@@ -191,9 +191,9 @@ const Contact = () => {
             {/* Footer styled bottom bar */}
             <div className="mt-auto w-full px-8 py-8 flex justify-between items-end border-t border-gray-200 dark:border-white/10 mt-20">
                 <div className="flex gap-8">
-                    <a href="https://www.instagram.com/man_an0112/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors uppercase text-sm tracking-widest">Instagram</a>
-                    <a href="https://x.com/man_an0112" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors uppercase text-sm tracking-widest">Twitter</a>
-                    <a href="https://www.linkedin.com/in/manan-patel-557535390" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors uppercase text-sm tracking-widest">LinkedIn</a>
+                    <a href="https://www.instagram.com/man_an0112/" target="_blank" rel="noopener noreferrer" className="hover-trigger cursor-none text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors uppercase text-sm tracking-widest">Instagram</a>
+                    <a href="https://x.com/man_an0112" target="_blank" rel="noopener noreferrer" className="hover-trigger cursor-none text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors uppercase text-sm tracking-widest">Twitter</a>
+                    <a href="https://www.linkedin.com/in/manan-patel-557535390" target="_blank" rel="noopener noreferrer" className="hover-trigger cursor-none text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors uppercase text-sm tracking-widest">LinkedIn</a>
                 </div>
                 <p className="text-gray-400 dark:text-gray-600 text-sm">© 2026 Manan Patel</p>
             </div>

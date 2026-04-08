@@ -91,35 +91,35 @@ const LeetCodeStats = () => {
                         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
                     >
                         {/* Total Solved Card */}
-                        <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
+                        <motion.div variants={item} className="hover-trigger cursor-none p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
                             <span className="text-gray-500 dark:text-gray-400 text-sm font-bold uppercase tracking-widest mb-2">Total Solved</span>
                             <AnimatedNumber value={stats.totalSolved} className="text-5xl font-black text-gray-900 dark:text-white group-hover:text-[#FFA116] transition-colors" />
                             <span className="text-xs text-gray-400 mt-2 block">out of {stats.totalQuestions}</span>
                         </motion.div>
 
                         {/* Easy Card */}
-                        <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
+                        <motion.div variants={item} className="hover-trigger cursor-none p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
                             <span className="text-[#00b8a3] text-sm font-bold uppercase tracking-widest mb-2">Easy</span>
                             <AnimatedNumber value={stats.easySolved} className="text-5xl font-black text-[#00b8a3] group-hover:scale-110 transition-transform" />
                             <span className="text-xs text-gray-400 mt-2 block">out of {stats.totalEasy}</span>
                         </motion.div>
 
                         {/* Medium Card */}
-                        <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
+                        <motion.div variants={item} className="hover-trigger cursor-none p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
                             <span className="text-[#ffc01e] text-sm font-bold uppercase tracking-widest mb-2">Medium</span>
                             <AnimatedNumber value={stats.mediumSolved} className="text-5xl font-black text-[#ffc01e] group-hover:scale-110 transition-transform" />
                             <span className="text-xs text-gray-400 mt-2 block">out of {stats.totalMedium}</span>
                         </motion.div>
 
                         {/* Hard Card */}
-                        <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
+                        <motion.div variants={item} className="hover-trigger cursor-none p-8 rounded-3xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl flex flex-col items-center justify-center text-center group hover:-translate-y-2 transition-transform duration-300">
                             <span className="text-[#ff375f] text-sm font-bold uppercase tracking-widest mb-2">Hard</span>
                             <AnimatedNumber value={stats.hardSolved} className="text-5xl font-black text-[#ff375f] group-hover:scale-110 transition-transform" />
                             <span className="text-xs text-gray-400 mt-2 block">out of {stats.totalHard}</span>
                         </motion.div>
 
                         {/* Ranking Card */}
-                        <motion.div variants={item} className="md:col-span-2 lg:col-span-4 p-8 rounded-3xl bg-gradient-to-r from-[#FFA116]/10 to-transparent border border-[#FFA116]/20 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl mt-4">
+                        <motion.div variants={item} className="hover-trigger cursor-none md:col-span-2 lg:col-span-4 p-8 rounded-3xl bg-gradient-to-r from-[#FFA116]/10 to-transparent border border-[#FFA116]/20 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl mt-4">
                             <div>
                                 <h4 className="text-2xl font-bold text-gray-900 dark:text-white capitalize">Global Ranking</h4>
                                 <p className="text-gray-500 dark:text-gray-400 mt-2 font-light">Consistent progress and dedication</p>

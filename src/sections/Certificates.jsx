@@ -99,7 +99,7 @@ const Certificates = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="flip-card aspect-video w-full h-[280px]"
+                            className="hover-trigger cursor-none flip-card aspect-video w-full h-[280px]"
                         >
                             <div className="flip-card-inner">
                                 {/* Front Side */}
@@ -130,7 +130,7 @@ const Certificates = () => {
                                         href={cert.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center px-6 py-2 bg-amber-500 hover:bg-amber-600 dark:bg-accent dark:hover:bg-accent/80 text-white text-sm font-bold rounded-full transition-colors"
+                                        className="hover-trigger cursor-none inline-flex items-center px-6 py-2 bg-amber-500 hover:bg-amber-600 dark:bg-accent dark:hover:bg-accent/80 text-white text-sm font-bold rounded-full transition-colors"
                                     >
                                         View Certificate
                                     </a>

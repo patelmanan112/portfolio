@@ -46,7 +46,7 @@ const About = () => {
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="relative group"
+                            className="relative group hover-trigger cursor-none"
                         >
                             {/* Outer glow ring */}
                             <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-gray-700/30 via-gray-400/10 to-transparent dark:from-white/20 dark:via-white/10 dark:to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 scale-95 group-hover:scale-105 pointer-events-none"></div>
@@ -77,7 +77,7 @@ const About = () => {
                             <motion.div
                                 animate={{ y: [0, -8, 0] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -bottom-5 -left-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-3 shadow-xl"
+                                className="absolute -bottom-5 -left-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-3 shadow-xl hover-trigger cursor-none"
                             >
                                 <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Full Stack</p>
                                 <p className="text-sm font-bold text-gray-900 dark:text-white">Developer ✦</p>
