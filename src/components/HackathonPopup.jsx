@@ -32,7 +32,7 @@ const hackathons = [
         name: 'Ganpat University',
         subtitle: 'Mehsana, Gujarat',
         year: '2025',
-        rank: '1st Place',
+        rank: '2nd Place',
         theme: {
             accent: '#8b5cf6',
             glow: 'rgba(139,92,246,0.15)',
@@ -41,11 +41,11 @@ const hackathons = [
             btn: 'hover:border-violet-500/50 hover:text-violet-400 hover:bg-violet-500/10',
         },
         tagline: 'Offline Hackathon · Winner',
-        description: 'Clinched 1st at Ganpat University with a project that impressed judges across design, usability & technical depth — a showcase of teamwork and production-ready code delivery.',
+        description: 'Clinched 2nd at Ganpat University with a project that impressed judges across design, usability & technical depth — a showcase of teamwork and production-ready code delivery.',
         photos: [
-            { src: '', caption: '🏆 Official Winner Certificate', isCertificate: true, isPending: true },
+            { src: '/hackathons/ganpat/certificate_GUNI.jpeg', caption: '🏆 Official Winner Certificate', isCertificate: true },
+            { src: '/hackathons/ganpat/GUNI_award_video.mp4', caption: 'Award Winning Moment', isVideo: true },
             { src: '/hackathons/ganpat/WhatsApp Image 2026-04-07 at 3.44.04 PM.jpeg', caption: 'Team at Ganpat University' },
-            { src: '/hackathons/ganpat/WhatsApp Image 2026-04-07 at 3.44.06 PM.jpeg', caption: 'Live Coding Session' },
             { src: '/hackathons/ganpat/WhatsApp Image 2026-04-07 at 3.44.09 PM.jpeg', caption: 'Presenting Our Project' },
             { src: '/hackathons/ganpat/WhatsApp Image 2026-04-07 at 3.44.16 PM.jpeg', caption: 'Receiving the Trophy' },
         ],
@@ -90,6 +90,20 @@ const PopupCarousel = ({ photos, theme }) => {
                                 </div>
                                 <span className="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 text-xs font-mono border border-yellow-500/30 uppercase tracking-widest">Pending</span>
                             </div>
+                        ) : photo.isVideo ? (
+                            <>
+                                <video
+                                    src={photo.src}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full bg-blue-500/90 text-white text-xs font-black uppercase tracking-wider shadow-xl flex items-center gap-1.5">
+                                    ▶ Memory Video
+                                </div>
+                            </>
                         ) : (
                             <>
                                 <img
@@ -152,6 +166,11 @@ const PopupCarousel = ({ photos, theme }) => {
                     >
                         {p.isPending ? (
                             <div className="w-full h-full flex items-center justify-center bg-yellow-500/10 text-yellow-400 text-base">🔒</div>
+                        ) : p.isVideo ? (
+                            <div className="w-full h-full bg-[#111] flex items-center justify-center relative">
+                                <video src={p.src} className="absolute inset-0 w-full h-full object-cover opacity-50" />
+                                <span className="relative text-white text-[9px] z-10 px-1 py-0.5 rounded bg-blue-500/80 uppercase font-black">Play</span>
+                            </div>
                         ) : (
                             <img src={p.src} alt={p.caption} className="w-full h-full object-cover"
                                 onError={(e) => { e.target.style.display='none'; e.target.parentNode.style.background='rgba(255,255,255,0.05)'; }}

@@ -36,7 +36,7 @@ const hackathons = [
         shortName: 'GU Hackathon',
         location: 'Mehsana, Gujarat',
         year: '2025',
-        rank: '1st Place',
+        rank: '2nd Place',
         tagline: 'Offline Hackathon Winner',
         color: 'violet',
         gradientFrom: 'from-violet-500/20',
@@ -45,7 +45,7 @@ const hackathons = [
         borderColor: 'border-violet-500/30',
         badgeColor: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
         highlight: 'text-violet-400',
-        description: 'Clinched 1st place at Ganpat University Mehsana with a cutting-edge project that impressed judges across design, usability, and technical depth. A testament to teamwork, resilience, and the ability to deliver production-ready code in record time.',
+        description: 'Clinched 2nd place at Ganpat University Mehsana with a cutting-edge project that impressed judges across design, usability, and technical depth. A testament to teamwork, resilience, and the ability to deliver production-ready code in record time.',
         photos: [
             { src: '/hackathons/ganpat/certificate_GUNI.jpeg', caption: '🏆 Official Winner Certificate', isCertificate: true },
             { src: '/hackathons/ganpat/GUNI_award_video.mp4', caption: 'Award Winning Moment', isVideo: true },
