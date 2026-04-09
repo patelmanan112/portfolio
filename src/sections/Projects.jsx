@@ -131,14 +131,8 @@ const Projects = () => {
                             </a>
                         </div>
 
-                        {/* Animated circle icon from the user's screenshot */}
-                        <motion.div 
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                            className="mt-28 w-14 h-14 rounded-full border-[2.5px] border-white/60 relative"
-                        >
-                            <div className="absolute top-[2px] left-[6px] w-[9px] h-[9px] rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]"></div>
-                        </motion.div>
+
+
                     </div>
 
                     {/* Bottom Masonry Grid Container */}
