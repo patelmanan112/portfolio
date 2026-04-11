@@ -1,7 +1,14 @@
 import { motion } from 'framer-motion';
-
+import { Helmet } from 'react-helmet';
 const About = () => {
     return (
+        <>
+               <Helmet>
+                <title>Know More About Manan</title>
+                <meta name='description' content='Learn more about Manan, a dedicated Full Stack Developer with a strong foundation in the MERN stack. Discover my journey, experience, passion for coding, and my mission to solve real-world problems through technology.'/>
+                <meta name='keywords' content='MANAN PATEL | SOFTWARE ENGINEER | Projects, React, Node.js, MongoDB, Full Stack Development, Problem-Solving, Modern Web Technologies'/>
+                <meta name='author' content='Manan Patel'/>
+            </Helmet>
         <section id="about" className="py-32 bg-gray-100 dark:bg-secondary relative overflow-hidden">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -87,6 +94,7 @@ const About = () => {
                 </div>
             </div>
         </section>
+        </>
     );
 };
 

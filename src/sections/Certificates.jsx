@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-
+import {Helmet} from 'react-helmet'
 const certificates = [
     {
         name: 'RepoReboot Participation',
@@ -54,6 +54,13 @@ const certificates = [
 
 const Certificates = () => {
     return (
+        <>
+               <Helmet>
+                <title>Certifications & Achievements | Manan</title>
+                <meta name='description' content='Browse certifications and achievements earned by Manan, demonstrating continuous learning, technical expertise, and commitment to professional growth in software development.'/>
+                <meta name='keywords' content='MANAN PATEL | SOFTWARE ENGINEER | Projects, React, Node.js, MongoDB, Full Stack Development, Problem-Solving, Modern Web Technologies'/>
+                <meta name='author' content='Manan Patel'/>
+            </Helmet>
         <section id="certificates" className="py-20 bg-gray-100 dark:bg-primary border-t dark:border-white/5 border-gray-200 overflow-hidden">
             <style>
                 {`
@@ -141,6 +148,7 @@ const Certificates = () => {
                 </div>
             </div>
         </section>
+        </>
     );
 };
 

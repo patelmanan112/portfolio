@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import {Helmet} from 'react-helmet'
 import { FaReact, FaJs, FaHtml5, FaCss3, FaNodeJs, FaGitAlt, FaGithub } from 'react-icons/fa';
 import { SiTailwindcss, SiTypescript, SiMongodb, SiPostman, SiNetlify, SiRender, SiExpress, SiNextdotjs, SiVercel, SiCplusplus, SiC } from 'react-icons/si';
 
@@ -72,6 +73,15 @@ const SkillCard = ({ skill, index }) => (
 
 const Skills = () => {
     return (
+        <>
+        <div>
+            <Helmet>
+                <title>Technical Skills | Manan</title>
+                <meta name='description' content='Discover Manan’s technical skills including frontend, backend, databases, and tools. Proficient in technologies like React, Node.js, Express, MongoDB, and more.'/>
+                <meta name='keywords' content='Technical Skills | Manan, React, Node.js, Express, MongoDB, Frontend, Backend, Databases, Tools'/>
+                <meta name='author' content='Manan Patel'/>
+            </Helmet>
+        </div>
         <section id="skills" className="py-24 relative overflow-hidden bg-white dark:bg-[#030303]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Simplified Header */}
@@ -110,6 +120,7 @@ const Skills = () => {
                 </div>
             </div>
         </section>
+        </>
     );
 };
 

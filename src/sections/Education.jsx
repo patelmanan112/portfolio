@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaGraduationCap, FaCalendarAlt, FaMapMarkerAlt, FaBook } from 'react-icons/fa';
-
+import {Helmet} from 'react-helmet'
 const education = [
     {
         school: 'Swaminarayan University',
@@ -26,6 +26,13 @@ const education = [
 
 const Education = () => {
     return (
+        <>
+               <Helmet>
+                <title>Academic Journey | Manan</title>
+                <meta name='description' content='A detailed overview of Manan’s academic background, including qualifications, institutions, and key learnings that built a strong foundation in computer science and software development.'/>
+                <meta name='keywords' content='MANAN PATEL | SOFTWARE ENGINEER | Projects, React, Node.js, MongoDB, Full Stack Development, Problem-Solving, Modern Web Technologies'/>
+                <meta name='author' content='Manan Patel'/>
+            </Helmet>
         <section id="education" className="py-32 bg-white dark:bg-primary relative overflow-hidden">
             {/* Animated gradient background */}
             <div className="absolute inset-0 opacity-30">
@@ -156,6 +163,7 @@ const Education = () => {
                 </div>
             </div>
         </section>
+        </>
     );
 };
 

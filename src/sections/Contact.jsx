@@ -7,6 +7,7 @@ import {
     SiDocker, SiPrisma, SiRedux, SiGit, SiGithub, SiLinkedin, SiX
 } from 'react-icons/si';
 import emailjs from '@emailjs/browser';
+import {Helmet} from 'react-helmet'
 
 const Contact = () => {
     const formRef = useRef();
@@ -74,6 +75,13 @@ const Contact = () => {
     ];
 
     return (
+        <>
+               <Helmet>
+                <title>Get in Touch | Manan</title>
+                <meta name='description' content='Get in touch with Manan for collaboration, freelance opportunities, or professional inquiries. Feel free to reach out via email or social platforms.'/>
+                <meta name='keywords' content='MANAN PATEL | SOFTWARE ENGINEER | Projects, React, Node.js, MongoDB, Full Stack Development, Problem-Solving, Modern Web Technologies'/>
+                <meta name='author' content='Manan Patel'/>
+            </Helmet>
         <section id="contact" className="min-h-screen bg-white dark:bg-black relative flex flex-col pt-32 pb-10 overflow-hidden transition-colors duration-500">
 
             {/* Background Grid */}
@@ -338,6 +346,7 @@ const Contact = () => {
                 </div>
             </motion.div>
         </section>
+        </>
     );
 };
 

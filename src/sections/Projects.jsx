@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { SiReact, SiHtml5, SiFirebase, SiGreensock } from 'react-icons/si';
 import { TbCodeCircle } from "react-icons/tb";
-
+import {Helmet} from 'react-helmet'
 const projectsData = [
   {
     title: 'Chainlink Clone',
@@ -105,6 +105,15 @@ const Projects = () => {
     const rightColumn = projectsData.filter((_, i) => i % 2 !== 0);
 
     return (
+      <>
+          <div>
+            <Helmet>
+                <title>Featured Projects | Manan</title>
+                <meta name='description' content='Explore a collection of real-world projects developed by Manan, showcasing expertise in full stack development, problem-solving, and modern web technologies including React, Node.js, and MongoDB.'/>
+                <meta name='keywords' content='MANAN PATEL | SOFTWARE ENGINEER | Projects, React, Node.js, MongoDB, Full Stack Development, Problem-Solving, Modern Web Technologies'/>
+                <meta name='author' content='Manan Patel'/>
+            </Helmet>
+        </div>
         <section id="projects" className="py-32 bg-[#020202] text-white min-h-screen">
             <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-20">
                 <div className="flex flex-col gap-16 md:gap-24">
@@ -154,6 +163,7 @@ const Projects = () => {
                 </div>
             </div>
         </section>
+      </>
     );
 };
 

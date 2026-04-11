@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { SiLeetcode, SiGmail } from 'react-icons/si';
-
+import {Helmet} from 'react-helmet'
 const Home = () => {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -35,6 +35,13 @@ const Home = () => {
     };
 
     return (
+       <>
+              <Helmet>
+                <title>Manan | Full Stack Developer</title>
+                <meta name='description' content='Welcome to Manan’s portfolio, a passionate Full Stack (MERN) Developer specializing in building modern, scalable, and user-friendly web applications. Explore my projects, technical skills, certifications, and journey in software development.'/>
+                <meta name='keywords' content='MANAN PATEL | Full Stack Developer | Projects, React, Node.js, MongoDB, Full Stack Development, Problem-Solving, Modern Web Technologies'/>
+                <meta name='author' content='Manan Patel'/>
+            </Helmet>
         <section id="home" ref={ref} className="h-screen flex items-center justify-center relative overflow-hidden">
             {/* Dynamic Background */}
             <div className="absolute inset-0 w-full h-full bg-[#fdfdfd] dark:bg-[#030303] z-0">
@@ -157,7 +164,7 @@ const Home = () => {
             >
                 <div className="w-[1px] h-24 bg-gradient-to-b from-gray-400 dark:from-white to-transparent"></div>
             </motion.div>
-        </section>
+        </section></>
     );
 };
 

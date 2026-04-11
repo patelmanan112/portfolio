@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import {Helmet} from 'react-helmet'
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const hackathons = [
@@ -79,6 +79,7 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor, isLCP }) => {
     const photo = photos[current];
 
     return (
+    
         <div className="flex flex-col gap-3">
             {/* Main Image / Video */}
             <div className={`relative aspect-[4/3] w-full rounded-2xl overflow-hidden border ${borderColor} bg-black/60 group`}>
@@ -222,6 +223,13 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor, isLCP }) => {
 
 const HackathonGallery = () => {
     return (
+            <>
+               <Helmet>
+                <title>Competitive Coding & Hackathons | Manan</title>
+                <meta name='description' content='A showcase of hackathons where Manan achieved top positions by building innovative and impactful solutions. This gallery highlights award-winning projects, technical excellence, and problem-solving skills.'/>
+                <meta name='keywords' content='MANAN PATEL | SOFTWARE ENGINEER | Projects, React, Node.js, MongoDB, Full Stack Development, Problem-Solving, Modern Web Technologies'/>
+                <meta name='author' content='Manan Patel'/>
+            </Helmet>
         <section id="hackathons" className="py-24 bg-[#020202] border-t border-white/5 relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 pointer-events-none">
@@ -315,6 +323,7 @@ const HackathonGallery = () => {
                 </div>
             </div>
         </section>
+        </>
     );
 };
 
