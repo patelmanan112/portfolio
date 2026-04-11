@@ -92,7 +92,7 @@ const Contact = () => {
                         >
                             LET'S
                             <br />
-                            <span className="text-gray-200 dark:text-gray-800">WORK</span>
+                            <span className="text-gray-400 dark:text-gray-600">WORK</span>
                         </motion.h2>
                     </div>
 
@@ -186,6 +186,7 @@ const Contact = () => {
                         href="mailto:manan.patel.cg@gmail.com"
                         initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                         className="hover-trigger cursor-none col-span-2 flex items-center justify-center gap-6 bg-[#121212] border border-white/10 rounded-3xl px-10 py-8 group transition-all duration-300 hover:bg-[#1a1a1a] h-full"
+                        aria-label="Send me an email"
                     >
                         <span className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0 shadow-sm border border-white/10">
                              <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
@@ -199,6 +200,7 @@ const Contact = () => {
                         target="_blank" rel="noreferrer"
                         initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
                         className="hover-trigger cursor-none col-span-1 row-span-2 bg-[#121212] border border-white/10 rounded-3xl relative overflow-hidden group min-h-[300px] flex flex-col pt-8 h-full"
+                        aria-label="Visit my LinkedIn profile"
                     >
                          <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-30 transition-opacity flex justify-around">
                              {[0, 1, 2].map((col) => (
@@ -243,6 +245,7 @@ const Contact = () => {
                         target="_blank" rel="noreferrer"
                         initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}
                         className="hover-trigger cursor-none col-span-2 row-span-2 bg-[#121212] border border-white/10 rounded-3xl p-8 group transition-all duration-300 hover:bg-[#1a1a1a] overflow-hidden flex flex-col justify-between min-h-[400px] h-full"
+                        aria-label="Visit my GitHub profile"
                     >
                         <div className="flex items-center justify-between mb-8 px-2">
                              <div className="flex items-center gap-3">
@@ -295,7 +298,10 @@ const Contact = () => {
                         </div>
 
                         <div className="mt-auto px-2 flex justify-between items-center text-white/40 text-[10px] font-mono font-bold uppercase tracking-wider pt-8 border-t border-white/5">
-                             <button className="px-6 py-3 bg-white text-black rounded-xl text-sm font-bold shadow-lg hover:scale-105 transition-transform flex items-center gap-2">
+                             <button 
+                                className="px-6 py-3 bg-white text-black rounded-xl text-sm font-bold shadow-lg hover:scale-105 transition-transform flex items-center gap-2"
+                                aria-label="Follow me on GitHub"
+                             >
                                  Follow <FaArrowRight className="text-xs" />
                              </button>
                              <span>24 Repositories</span>
@@ -308,6 +314,7 @@ const Contact = () => {
                         target="_blank" rel="noreferrer"
                         initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.25 }}
                         className="hover-trigger cursor-none col-span-1 bg-white border border-transparent rounded-3xl p-8 flex flex-col justify-between group transition-all duration-300 min-h-[180px] relative overflow-hidden"
+                        aria-label="Visit my X (Twitter) profile"
                     >
                          <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                              <SiX className="text-6xl text-black" />
@@ -325,8 +332,8 @@ const Contact = () => {
                 <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
                      <p className="text-white/20 text-[10px] font-mono uppercase tracking-widest">© 2026 Crafted with precision</p>
                      <div className="flex gap-6">
-                         <a href="#" className="text-white/20 hover:text-white transition-colors text-[10px] font-mono uppercase tracking-widest hover-trigger cursor-none">Sitemap</a>
-                         <a href="#" className="text-white/20 hover:text-white transition-colors text-[10px] font-mono uppercase tracking-widest hover-trigger cursor-none">Privacy</a>
+                         <a href="#" className="text-white/20 hover:text-white transition-colors text-[10px] font-mono uppercase tracking-widest hover-trigger cursor-none" aria-label="View Sitemap">Sitemap</a>
+                         <a href="#" className="text-white/20 hover:text-white transition-colors text-[10px] font-mono uppercase tracking-widest hover-trigger cursor-none" aria-label="View Privacy Policy">Privacy</a>
                      </div>
                 </div>
             </motion.div>

@@ -58,7 +58,7 @@ const hackathons = [
 
 // ─── Sub-component: Photo Carousel ────────────────────────────────────────────
 
-const PhotoCarousel = ({ photos, color, highlight, borderColor }) => {
+const PhotoCarousel = ({ photos, color, highlight, borderColor, isLCP }) => {
     const [current, setCurrent] = useState(0);
     const [direction, setDirection] = useState(1);
     const videoRef = useRef(null);
@@ -124,6 +124,8 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor }) => {
                                     src={photo.src}
                                     alt={photo.caption}
                                     className="w-full h-full object-cover"
+                                    fetchPriority={isLCP && current === 0 ? "high" : "auto"}
+                                    decoding="async"
                                     onError={(e) => {
                                         e.target.style.display = 'none';
                                         e.target.parentNode.classList.add('flex','items-center','justify-center');
@@ -147,10 +149,18 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor }) => {
                 </AnimatePresence>
 
                 {/* Arrow buttons */}
-                <button onClick={prev} className="hover-trigger cursor-none absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/10 transition-all opacity-0 group-hover:opacity-100">
+                <button 
+                    onClick={prev} 
+                    className="hover-trigger cursor-none absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/10 transition-all opacity-0 group-hover:opacity-100"
+                    aria-label="Previous photo"
+                >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/></svg>
                 </button>
-                <button onClick={next} className="hover-trigger cursor-none absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/10 transition-all opacity-0 group-hover:opacity-100">
+                <button 
+                    onClick={next} 
+                    className="hover-trigger cursor-none absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/10 transition-all opacity-0 group-hover:opacity-100"
+                    aria-label="Next photo"
+                >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
                 </button>
             </div>
@@ -166,6 +176,7 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor }) => {
                         onClick={() => goTo(i)}
                         className={`hover-trigger cursor-none relative w-14 h-10 rounded-lg overflow-hidden border-2 transition-all duration-300 ${i === current ? borderColor.replace('border-', 'border-') + ' scale-105' : 'border-white/10 opacity-50 hover:opacity-80'}`}
                         style={{ borderColor: i === current ? undefined : undefined }}
+                        aria-label={`View photo ${i + 1}: ${p.caption}`}
                     >
                         {p.isPending ? (
                             <div className="w-full h-full flex items-center justify-center bg-yellow-500/10 text-yellow-400 text-lg">🔒</div>
@@ -175,7 +186,12 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor }) => {
                                 <span className="relative text-white text-[10px] z-10 px-1.5 py-0.5 rounded bg-blue-500/80 uppercase font-black">Play</span>
                             </div>
                         ) : (
-                            <img src={p.src} alt={p.caption} className="w-full h-full object-cover"
+                            <img 
+                                src={p.src} 
+                                alt={p.caption} 
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                                decoding="async"
                                 onError={(e) => { e.target.style.display='none'; e.target.parentNode.style.background='rgba(255,255,255,0.05)'; }}
                             />
                         )}
@@ -189,8 +205,12 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor }) => {
             {/* Dot indicators */}
             <div className="flex gap-2 justify-center mt-1">
                 {photos.map((_, i) => (
-                    <button key={i} onClick={() => goTo(i)} className={`hover-trigger cursor-none rounded-full transition-all duration-300 ${i === current ? 'w-6 h-2' : 'w-2 h-2 opacity-40'}`}
+                    <button 
+                        key={i} 
+                        onClick={() => goTo(i)} 
+                        className={`hover-trigger cursor-none rounded-full transition-all duration-300 ${i === current ? 'w-6 h-2' : 'w-2 h-2 opacity-40'}`}
                         style={{ background: i === current ? (color === 'amber' ? '#f59e0b' : '#8b5cf6') : 'white' }}
+                        aria-label={`Go to slide ${i + 1}`}
                     />
                 ))}
             </div>
@@ -270,7 +290,13 @@ const HackathonGallery = () => {
 
                             {/* Photo Carousel */}
                             <div className="relative z-10 mb-6">
-                                <PhotoCarousel photos={h.photos} color={h.color} highlight={h.highlight} borderColor={h.borderColor} />
+                                <PhotoCarousel 
+                                    photos={h.photos} 
+                                    color={h.color} 
+                                    highlight={h.highlight} 
+                                    borderColor={h.borderColor} 
+                                    isLCP={idx === 0} 
+                                />
                             </div>
 
                             {/* Description */}

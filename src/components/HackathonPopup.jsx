@@ -110,6 +110,7 @@ const PopupCarousel = ({ photos, theme }) => {
                                     src={photo.src}
                                     alt={photo.caption}
                                     className="w-full h-full object-cover"
+                                    decoding="async"
                                     onError={(e) => {
                                         e.target.style.display = 'none';
                                         const fb = e.target.parentNode.querySelector('.fallback-photo');
@@ -138,10 +139,18 @@ const PopupCarousel = ({ photos, theme }) => {
                 </AnimatePresence>
 
                 {/* Nav arrows */}
-                <button onClick={prev} className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/70 border border-white/10 text-white transition-all hover:bg-black/90 opacity-0 group-hover:opacity-100">
+                <button 
+                    onClick={prev} 
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/70 border border-white/10 text-white transition-all hover:bg-black/90 opacity-0 group-hover:opacity-100"
+                    aria-label="Previous photo"
+                >
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7"/></svg>
                 </button>
-                <button onClick={next} className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/70 border border-white/10 text-white transition-all hover:bg-black/90 opacity-0 group-hover:opacity-100">
+                <button 
+                    onClick={next} 
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/70 border border-white/10 text-white transition-all hover:bg-black/90 opacity-0 group-hover:opacity-100"
+                    aria-label="Next photo"
+                >
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7"/></svg>
                 </button>
 
@@ -161,6 +170,7 @@ const PopupCarousel = ({ photos, theme }) => {
                         key={i}
                         onClick={() => go(i)}
                         title={p.caption}
+                        aria-label={`View photo ${i + 1}: ${p.caption}`}
                         className="relative w-12 h-8 rounded-lg overflow-hidden border-2 transition-all duration-300"
                         style={{ borderColor: i === current ? theme.accent : 'rgba(255,255,255,0.08)', opacity: i === current ? 1 : 0.4 }}
                     >
@@ -172,7 +182,12 @@ const PopupCarousel = ({ photos, theme }) => {
                                 <span className="relative text-white text-[9px] z-10 px-1 py-0.5 rounded bg-blue-500/80 uppercase font-black">Play</span>
                             </div>
                         ) : (
-                            <img src={p.src} alt={p.caption} className="w-full h-full object-cover"
+                            <img 
+                                src={p.src} 
+                                alt={p.caption} 
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                                decoding="async"
                                 onError={(e) => { e.target.style.display='none'; e.target.parentNode.style.background='rgba(255,255,255,0.05)'; }}
                             />
                         )}
@@ -231,6 +246,7 @@ const HackathonPopup = ({ onClose }) => {
                                 transition={{ delay: 0.4 }}
                                 onClick={onClose}
                                 className="absolute top-5 right-5 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/40 hover:text-white transition-all group"
+                                aria-label="Close popup"
                             >
                                 <svg className="w-4 h-4 transform group-hover:rotate-90 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>
@@ -248,6 +264,7 @@ const HackathonPopup = ({ onClose }) => {
                                     <button
                                         key={hack.id}
                                         onClick={() => setActiveTab(i)}
+                                        aria-label={`Switch to ${i === 0 ? 'Sangam' : 'Ganpat'} University profile`}
                                         className="relative flex-1 px-3 py-2 rounded-xl text-xs font-mono uppercase tracking-wider transition-all duration-300 border"
                                         style={{
                                             background: activeTab === i ? `${hack.theme.accent}18` : 'rgba(255,255,255,0.03)',
@@ -309,6 +326,7 @@ const HackathonPopup = ({ onClose }) => {
                                     {/* CTA Button */}
                                     <button
                                         onClick={onClose}
+                                        aria-label="Continue to portfolio"
                                         className={`relative group w-full inline-flex items-center justify-center px-8 py-4 font-medium text-white transition-all duration-300 bg-white/4 border border-white/10 rounded-full overflow-hidden ${h.theme.btn} focus:outline-none`}
                                     >
                                         <span className="relative z-10 flex items-center gap-3 text-sm uppercase tracking-widest font-mono transition-all duration-300 group-hover:gap-5">
