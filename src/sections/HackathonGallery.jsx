@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {Helmet} from 'react-helmet'
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -67,16 +67,26 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor, isLCP }) => {
         setDirection(index > current ? 1 : -1);
         setCurrent(index);
     };
-    const prev = () => { setDirection(-1); setCurrent(c => (c === 0 ? photos.length - 1 : c - 1)); };
-    const next = () => { setDirection(1);  setCurrent(c => (c === photos.length - 1 ? 0 : c + 1)); };
+    const prev = useCallback(() => { setDirection(-1); setCurrent(c => (c === 0 ? photos.length - 1 : c - 1)); }, [photos.length]);
+    const next = useCallback(() => { setDirection(1);  setCurrent(c => (c === photos.length - 1 ? 0 : c + 1)); }, [photos.length]);
+
+    const photo = photos[current];
+
+    useEffect(() => {
+        let timer;
+        if (!photo.isVideo) {
+            timer = setTimeout(() => {
+                next();
+            }, 4000);
+        }
+        return () => clearTimeout(timer);
+    }, [current, photo.isVideo, next]);
 
     const slide = {
         initial: (d) => ({ opacity: 0, x: d * 60 }),
         animate: { opacity: 1, x: 0 },
         exit: (d) => ({ opacity: 0, x: d * -60 }),
     };
-
-    const photo = photos[current];
 
     return (
     
@@ -110,8 +120,8 @@ const PhotoCarousel = ({ photos, color, highlight, borderColor, isLCP }) => {
                                     src={photo.src}
                                     autoPlay
                                     muted
-                                    loop
                                     playsInline
+                                    onEnded={next}
                                     className="w-full h-full object-cover"
                                 />
                                 <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_40px_rgba(0,0,0,0.5)]"></div>

@@ -6,6 +6,14 @@ import { TbCodeCircle } from "react-icons/tb";
 import {Helmet} from 'react-helmet'
 const projectsData = [
   {
+    title: 'Mealawe Clone',
+    techTags: [{ name: 'React', icon: <SiReact /> }, { name: 'Tailwind CSS', icon: <TbCodeCircle /> }, { name: 'Framer Motion', icon: <TbCodeCircle /> }],
+    description: 'A modern, responsive portfolio website featuring smooth animations, dark theme design, and interactive components.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    github: 'https://github.com/patelmanan112/Website/tree/main/website-5',
+    live: 'https://mealawe-clone.netlify.app/'
+  },
+  {
     title: 'Chainlink Clone',
     techTags: [{ name: 'React', icon: <SiReact /> }, { name: 'Tailwind CSS', icon: <TbCodeCircle /> }],
     description: 'Clone of the Chainlink homepage demonstrating complex grid layouts commonly used in modern Web3 landing pages.',

@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
 
 function AnimatedNumber({ value, startFromBigger = false, className = "" }) {
     const ref = useRef(null);
     const inView = useInView(ref, { once: true, margin: "-50px" });
     
-    // For ranking/downwards, start visually higher
     const startValue = startFromBigger ? value + 500 : 0;
     const motionValue = useMotionValue(startValue);
     const rounded = useTransform(motionValue, (latest) => Math.round(latest).toLocaleString());
@@ -22,10 +21,107 @@ function AnimatedNumber({ value, startFromBigger = false, className = "" }) {
 
     return <motion.span ref={ref} className={`inline-block ${className}`}>{rounded}</motion.span>;
 }
-import { GitHubCalendar } from 'react-github-calendar';
+
+const GithubCalendar = React.lazy(() => import('react-github-calendar'));
 import { FaBookBookmark, FaStar } from 'react-icons/fa6';
 import { BiGitCommit, BiCodeAlt } from 'react-icons/bi';
 import { MdBolt } from 'react-icons/md';
+
+const SnakeCommits = ({ commits = 540 }) => {
+    const [snake, setSnake] = useState([{ x: 0, y: 0 }]);
+    const [food, setFood] = useState({ x: 5, y: 5 });
+    const [direction, setDirection] = useState({ x: 1, y: 0 });
+    const [score, setScore] = useState(0);
+    const [isComplete, setIsComplete] = useState(false);
+    const gameRef = useRef(null);
+    const gridSize = 10;
+
+    const spawnFood = () => {
+        let newFood;
+        while (true) {
+            newFood = {
+                x: Math.floor(Math.random() * gridSize),
+                y: Math.floor(Math.random() * gridSize)
+            };
+            if (!snake.some(s => s.x === newFood.x && s.y === newFood.y)) {
+                break;
+            }
+        }
+        setFood(newFood);
+    };
+
+    useEffect(() => {
+        if (isComplete) return;
+        
+        const moveSnake = setInterval(() => {
+            setSnake(prev => {
+                const head = { x: prev[0].x + direction.x, y: prev[0].y + direction.y };
+                
+                if (head.x < 0 || head.x >= gridSize || head.y < 0 || head.y >= gridSize) {
+                    const newDir = direction.x !== 0 ? { x: 0, y: 1 } : { x: 1, y: 0 };
+                    setDirection(newDir);
+                    return prev;
+                }
+                
+                const newSnake = [head, ...prev];
+                if (head.x === food.x && head.y === food.y) {
+                    setScore(s => {
+                        if (s + 1 >= commits) setIsComplete(true);
+                        return s + 1;
+                    });
+                    spawnFood();
+                } else {
+                    newSnake.pop();
+                }
+                return newSnake;
+            });
+        }, 200);
+        return () => clearInterval(moveSnake);
+    }, [direction, food, isComplete, commits]);
+
+    return (
+        <div className="flex flex-col items-center">
+            <div className="flex justify-between w-full mb-3 text-xs">
+                <span className="text-gray-400">Commits eaten: <span className="text-green-400 font-bold">{score}</span> / {commits}</span>
+                <span className="text-gray-500 text-[10px]">🐍 Auto-eating</span>
+            </div>
+            <div className="relative bg-[#0A0A0B] rounded-lg p-2 border border-white/10">
+                <div 
+                    ref={gameRef}
+                    className="grid gap-0.5"
+                    style={{ gridTemplateColumns: `repeat(${gridSize}, 1fr)` }}
+                >
+                    {Array.from({ length: gridSize * gridSize }).map((_, i) => {
+                        const x = i % gridSize;
+                        const y = Math.floor(i / gridSize);
+                        const isSnake = snake.some(s => s.x === x && s.y === y);
+                        const isHead = snake[0].x === x && snake[0].y === y;
+                        const isFood = food.x === x && food.y === y;
+                        return (
+                            <div
+                                key={i}
+                                className={`w-4 h-4 rounded-sm transition-all duration-200 ${
+                                    isHead ? 'bg-green-400 shadow-lg shadow-green-400/50' :
+                                    isSnake ? 'bg-green-600' :
+                                    isFood ? 'bg-yellow-400 animate-pulse shadow-lg shadow-yellow-400/50' :
+                                    'bg-white/5'
+                                }`}
+                            />
+                        );
+                    })}
+                </div>
+            </div>
+            {isComplete && (
+                <div className="mt-3 px-4 py-1.5 text-xs bg-green-500/20 text-green-400 rounded-full border border-green-500/30">
+                    All {commits} commits eaten! 🎉
+                </div>
+            )}
+            <p className="mt-3 text-[10px] text-gray-500 text-center">
+                2025 Contribution Goal: {commits}+ commits
+            </p>
+        </div>
+    );
+};
 
 const languageColors = {
     JavaScript: '#f1e05a',
@@ -218,28 +314,17 @@ const GithubStats = () => {
                         </div>
                     </motion.div>
 
-                    {/* Right: Contribution Activity Graph */}
+                    {/* Right: Snake Game - Commits */}
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         className="bg-[#121214] border border-white/10 rounded-3xl p-6 flex flex-col"
                     >
-                        <h3 className="text-lg font-bold text-white mb-6">Contribution Activity</h3>
-                        <div className="flex-1 w-full flex items-center justify-center overflow-x-auto custom-scrollbar pb-4 -mx-2 px-2">
-                            <div className="min-w-max p-4 bg-[#0A0A0B]/80 rounded-xl border border-white/5">
-                                <GitHubCalendar 
-                                    username="patelmanan112"
-                                    colorScheme="dark"
-                                    fontSize={12}
-                                    blockSize={12}
-                                    blockMargin={4}
-                                    theme={{
-                                        light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
-                                        dark: ['#161b22', '#39235e', '#6638b6', '#8e58f5', '#a67af4'], // Purple theme based on second photo
-                                    }}
-                                />
-                            </div>
+                        <h3 className="text-lg font-bold text-white mb-2">Eat Your Commits</h3>
+                        <p className="text-xs text-gray-500 mb-4">Snake eats commits 🐍</p>
+                        <div className="flex-1 flex items-center justify-center">
+                            <SnakeCommits commits={500} />
                         </div>
                         
                         <div className="mt-4 pt-4 border-t border-white/5 flex justify-center">

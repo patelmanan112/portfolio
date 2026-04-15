@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // ─── Hackathon Data ────────────────────────────────────────────────────────────
@@ -57,12 +57,29 @@ const hackathons = [
 const PopupCarousel = ({ photos, theme }) => {
     const [current, setCurrent] = useState(0);
     const [dir, setDir] = useState(1);
+    const videoRef = useRef(null);
 
     const go = (i) => { setDir(i > current ? 1 : -1); setCurrent(i); };
     const prev = () => { setDir(-1); setCurrent(c => (c === 0 ? photos.length - 1 : c - 1)); };
     const next = () => { setDir(1);  setCurrent(c => (c === photos.length - 1 ? 0 : c + 1)); };
 
     const photo = photos[current];
+
+    useEffect(() => {
+        let timer;
+        if (!photo.isVideo) {
+            timer = setTimeout(() => {
+                next();
+            }, 4000);
+        }
+        return () => clearTimeout(timer);
+    }, [current, photo.isVideo, next]);
+
+    const slide = {
+        initial: (d) => ({ opacity: 0, x: d * 60 }),
+        animate: { opacity: 1, x: 0 },
+        exit: (d) => ({ opacity: 0, x: d * -60 }),
+    };
 
     return (
         <div className="flex flex-col h-full">
@@ -75,10 +92,10 @@ const PopupCarousel = ({ photos, theme }) => {
                     <motion.div
                         key={current}
                         custom={dir}
-                        initial={{ opacity: 0, x: dir * 50 }}
+                        initial={{ opacity: 0, x: dir * 60 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: dir * -50 }}
-                        transition={{ duration: 0.35, ease: 'easeInOut' }}
+                        exit={{ opacity: 0, x: dir * -60 }}
+                        transition={{ duration: 0.4, ease: 'easeInOut' }}
                         className="absolute inset-0"
                     >
                         {photo.isPending ? (
@@ -93,11 +110,13 @@ const PopupCarousel = ({ photos, theme }) => {
                         ) : photo.isVideo ? (
                             <>
                                 <video
+                                    ref={videoRef}
                                     src={photo.src}
                                     autoPlay
                                     muted
                                     loop
                                     playsInline
+                                    onEnded={next}
                                     className="w-full h-full object-cover"
                                 />
                                 <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full bg-blue-500/90 text-white text-xs font-black uppercase tracking-wider shadow-xl flex items-center gap-1.5">
@@ -203,6 +222,13 @@ const PopupCarousel = ({ photos, theme }) => {
 const HackathonPopup = ({ onClose }) => {
     const [activeTab, setActiveTab] = useState(0);
     const h = hackathons[activeTab];
+
+    useEffect(() => {
+        const closeTimer = setTimeout(() => {
+            onClose();
+        }, 32000);
+        return () => clearTimeout(closeTimer);
+    }, [onClose]);
 
     return (
         <AnimatePresence>
