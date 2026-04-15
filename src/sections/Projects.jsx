@@ -9,7 +9,7 @@ const projectsData = [
     title: 'Mealawe Clone',
     techTags: [{ name: 'React', icon: <SiReact /> }, { name: 'Tailwind CSS', icon: <TbCodeCircle /> }, { name: 'Framer Motion', icon: <TbCodeCircle /> }],
     description: 'A modern, responsive portfolio website featuring smooth animations, dark theme design, and interactive components.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    image: 'https://res.cloudinary.com/dxzo7jfbn/image/upload/v1776273777/mealawe_k2kihe.png',
     github: 'https://github.com/patelmanan112/Website/tree/main/website-5',
     live: 'https://mealawe-clone.netlify.app/'
   },
