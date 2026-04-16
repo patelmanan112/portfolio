@@ -38,7 +38,7 @@ const Home = () => {
        <>
               <Helmet>
                 <title>Manan | Full Stack Developer</title>
-                <meta name='description' content='Welcome to Manan’s portfolio, a passionate Full Stack (MERN) Developer specializing in building modern, scalable, and user-friendly web applications. Explore my projects, technical skills, certifications, and journey in software development.'/>
+                <meta name='description' content="Welcome to Manan's portfolio, a passionate Full Stack (MERN) Developer specializing in building modern, scalable, and user-friendly web applications. Explore my projects, technical skills, certifications, and journey in software development."/>
                 <meta name='keywords' content='MANAN PATEL | Full Stack Developer | Projects, React, Node.js, MongoDB, Full Stack Development, Problem-Solving, Modern Web Technologies'/>
                 <meta name='author' content='Manan Patel'/>
             </Helmet>
@@ -79,7 +79,7 @@ const Home = () => {
                         href="https://drive.google.com/file/d/1NlVHP2UtsQmZf6w9YOodEHcNaLNGV4ap/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group relative px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95 cursor-none hover-trigger"
+                        className="group relative px-10 py-5 bg-white text-black font-bold rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:bg-black hover:text-white hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] active:scale-95 cursor-none hover-trigger border-2 border-black dark:border-white/20 dark:hover:border-white"
                     >
                         <span className="relative z-10 flex items-center justify-center gap-3 text-lg">
                             View Resume
@@ -87,12 +87,11 @@ const Home = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
                         </span>
-                        <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </a>
                 </motion.div>
 
                 {/* Social Media Links */}
-                <motion.div variants={item} className="flex justify-center items-center gap-6 mt-6">
+                <motion.div variants={item} className="flex justify-center items-center gap-6 mt-10">
                     {[
                         {
                             icon: <FaGithub size={24} />,
