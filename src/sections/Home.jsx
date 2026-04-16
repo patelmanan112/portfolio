@@ -76,7 +76,7 @@ const Home = () => {
 
                 <motion.div variants={item} className="flex justify-center gap-6 mt-4">
                     <a
-                        href="https://drive.google.com/file/d/1NlVHP2UtsQmZf6w9YOodEHcNaLNGV4ap/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1ezSxJ7gKE5N-FZ5Xa8tuOqBPK4AU1qJx/view?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group relative px-10 py-5 bg-white text-black font-bold rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:bg-black hover:text-white hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] active:scale-95 cursor-none hover-trigger border-2 border-black dark:border-white/20 dark:hover:border-white"
