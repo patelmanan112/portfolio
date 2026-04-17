@@ -74,57 +74,52 @@ const Home = () => {
                     </p>
                 </motion.div>
 
-                <motion.div variants={item} className="flex justify-center gap-6 mt-4">
+                <motion.div variants={item} className="flex flex-col md:flex-row justify-center items-center gap-6 mt-4">
                     <a
                         href="https://drive.google.com/file/d/1ezSxJ7gKE5N-FZ5Xa8tuOqBPK4AU1qJx/view?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group relative px-10 py-5 bg-white text-black font-bold rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:bg-black hover:text-white hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] active:scale-95 cursor-none hover-trigger border-2 border-black dark:border-white/20 dark:hover:border-white"
+                        className="hover-trigger cursor-none text-gray-900 dark:text-white text-sm md:text-xl uppercase tracking-widest font-bold border border-gray-200 dark:border-white/20 rounded-full px-8 py-4 md:px-12 md:py-6 hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-500 hover:scale-105 flex items-center gap-4"
                     >
-                        <span className="relative z-10 flex items-center justify-center gap-3 text-lg">
-                            View Resume
-                            <svg className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </span>
+                        View Resume
                     </a>
                 </motion.div>
 
                 {/* Social Media Links */}
-                <motion.div variants={item} className="flex justify-center items-center gap-6 mt-10">
+                <motion.div variants={item} className="flex justify-center items-center gap-4 md:gap-6 mt-10 flex-wrap">
                     {[
                         {
-                            icon: <FaGithub size={24} />,
+                            icon: <FaGithub />,
                             href: 'https://github.com/patelmanan112',
                             label: 'GitHub',
                             hoverColor: 'hover:text-gray-900 dark:hover:text-white hover:border-gray-900 dark:hover:border-white',
                         },
                         {
-                            icon: <FaLinkedin size={24} />,
+                            icon: <FaLinkedin />,
                             href: 'https://www.linkedin.com/in/manan-patel-557535390/',
                             label: 'LinkedIn',
                             hoverColor: 'hover:text-[#0A66C2] hover:border-[#0A66C2]',
                         },
                         {
-                            icon: <FaYoutube size={24} />,
+                            icon: <FaYoutube />,
                             href: 'https://www.youtube.com/@mananpatel-q6w',
                             label: 'YouTube',
                             hoverColor: 'hover:text-[#FF0000] hover:border-[#FF0000]',
                         },
                         {
-                            icon: <FaXTwitter size={24} />,
+                            icon: <FaXTwitter />,
                             href: 'https://x.com/man_an0112',
                             label: 'X',
                             hoverColor: 'hover:text-gray-900 dark:hover:text-white hover:border-gray-900 dark:hover:border-white',
                         },
                         {
-                            icon: <SiLeetcode size={24} />,
+                            icon: <SiLeetcode />,
                             href: 'https://leetcode.com/u/manan01127/',
                             label: 'LeetCode',
                             hoverColor: 'hover:text-[#FFA116] hover:border-[#FFA116]',
                         },
                         {
-                            icon: <SiGmail size={24} />,
+                            icon: <SiGmail />,
                             href: 'mailto:manan.patel.cg@gmail.com',
                             label: 'Email',
                             hoverColor: 'hover:text-[#EA4335] hover:border-[#EA4335]',
@@ -138,15 +133,17 @@ const Home = () => {
                             aria-label={label}
                             title={label}
                             className={`
-                                w-12 h-12 rounded-full flex items-center justify-center
+                                w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center
                                 border border-gray-300 dark:border-gray-700
                                 text-gray-500 dark:text-gray-400
+                                text-[20px] md:text-[24px]
                                 transition-all duration-300 ease-out
                                 hover:scale-110 hover:-translate-y-1
                                 hover:shadow-lg
                                 cursor-none hover-trigger
                                 ${hoverColor}
                             `}
+
                         >
                             {icon}
                         </a>

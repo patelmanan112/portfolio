@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import {Helmet} from 'react-helmet'
 import { FaReact, FaJs, FaHtml5, FaCss3, FaNodeJs, FaGitAlt, FaGithub } from 'react-icons/fa';
-import { SiTailwindcss, SiTypescript, SiMongodb, SiPostman, SiNetlify, SiRender, SiExpress, SiNextdotjs, SiVercel, SiCplusplus, SiC } from 'react-icons/si';
+import { SiTailwindcss, SiClerk, SiMongodb, SiPostman, SiNetlify, SiRender, SiExpress, SiNextdotjs, SiVercel, SiCplusplus, SiC } from 'react-icons/si';
 
 const skillCategories = [
     {
@@ -10,7 +10,6 @@ const skillCategories = [
             { name: 'C', icon: SiC, color: '#A8B9CC' },
             { name: 'C++', icon: SiCplusplus, color: '#00599C' },
             { name: 'JavaScript', icon: FaJs, color: '#F7DF1E' },
-            { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
         ]
     },
     {
@@ -40,6 +39,7 @@ const skillCategories = [
             { name: 'Netlify', icon: SiNetlify, color: '#00C7B7' },
             { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
             { name: 'Render', icon: SiRender, color: '#46E3B7' },
+            { name: 'Clerk', icon: SiClerk, color: '#6C47FF' },
         ]
     }
 ];

@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowRight, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 import { 
-    SiReact, SiNodedotjs, SiNextdotjs, SiMongodb, SiTailwindcss, SiTypescript, 
+    SiReact, SiNodedotjs, SiNextdotjs, SiMongodb, SiTailwindcss, SiClerk,
     SiJavascript, SiFramer, SiPython, SiVite, SiExpress, SiPostgresql, 
     SiDocker, SiPrisma, SiRedux, SiGit, SiGithub, SiLinkedin, SiX
 } from 'react-icons/si';
@@ -65,7 +65,7 @@ const Contact = () => {
         { icon: <SiNodedotjs />, color: '#339933' },
         { icon: <SiNextdotjs />, color: '#fff' },
         { icon: <SiTailwindcss />, color: '#06B6D4' },
-        { icon: <SiTypescript />, color: '#3178C6' },
+        { icon: <SiClerk />, color: '#6C47FF' },
         { icon: <SiMongodb />, color: '#47A248' },
         { icon: <SiExpress />, color: '#fff' },
         { icon: <SiFramer />, color: '#BB4DCE' },
@@ -176,7 +176,7 @@ const Contact = () => {
                     {/* 1. Contact Title (1x1) */}
                     <motion.div 
                         initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-                        className="col-span-1 flex items-center justify-center py-8 relative group h-full"
+                        className="col-span-2 md:col-span-1 flex items-center justify-center py-8 relative group h-full"
                     >
                         {/* 4 Corner Accents */}
                         <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-white transition-all duration-300 group-hover:w-6 group-hover:h-6" />
@@ -184,7 +184,7 @@ const Contact = () => {
                         <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-white transition-all duration-300 group-hover:w-6 group-hover:h-6" />
                         <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-white transition-all duration-300 group-hover:w-6 group-hover:h-6" />
                         
-                        <h3 className="text-white text-3xl font-black tracking-[0.3em] font-sans uppercase">
+                        <h3 className="text-white text-2xl md:text-3xl font-black tracking-[0.2em] md:tracking-[0.3em] font-sans uppercase">
                             Contact
                         </h3>
                     </motion.div>
