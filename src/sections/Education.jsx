@@ -10,7 +10,8 @@ const education = [
         location: 'Kalol, Gujarat',
         status: 'Pursuing',
         description: 'Focused on modern web technologies, software engineering practices, and full-stack development',
-        color: '#3b82f6'
+        color: '#3b82f6',
+        score: 'CGPA: 9.86'
     },
     {
         school: 'Vidhyadhish Vidhya Sankul',
@@ -20,7 +21,8 @@ const education = [
         location: 'Bhavnagar, Gujarat',
         status: 'Completed',
         description: 'Strong foundation in Physics, Chemistry, Mathematics and Computer Science',
-        color: '#8b5cf6'
+        color: '#8b5cf6',
+        score: 'Percentage: 74%'
     }
 ];
 
@@ -140,6 +142,18 @@ const Education = () => {
                                                 <FaMapMarkerAlt className="text-sm" />
                                                 <span className="text-sm">{edu.location}</span>
                                             </div>
+
+                                            {/* Score / Grade */}
+                                            {edu.score && (
+                                                <div className="flex items-center mb-4">
+                                                    <span 
+                                                        className="px-3 py-1.5 text-sm font-bold font-mono rounded-lg border"
+                                                        style={{ color: edu.color, borderColor: `${edu.color}30`, backgroundColor: `${edu.color}15` }}
+                                                    >
+                                                        {edu.score}
+                                                    </span>
+                                                </div>
+                                            )}
 
                                             {/* Description */}
                                             <div className="flex items-start gap-3 mt-6 pt-6 border-t border-white/10">

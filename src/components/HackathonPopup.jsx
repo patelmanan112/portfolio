@@ -221,14 +221,19 @@ const PopupCarousel = ({ photos, theme }) => {
 
 const HackathonPopup = ({ onClose }) => {
     const [activeTab, setActiveTab] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(30);
     const h = hackathons[activeTab];
 
     useEffect(() => {
-        const closeTimer = setTimeout(() => {
+        if (timeLeft <= 0) {
             onClose();
-        }, 32000);
-        return () => clearTimeout(closeTimer);
-    }, [onClose]);
+            return;
+        }
+        const timer = setInterval(() => {
+            setTimeLeft(prev => prev - 1);
+        }, 1000);
+        return () => clearInterval(timer);
+    }, [timeLeft, onClose]);
 
     return (
         <AnimatePresence>
@@ -349,19 +354,34 @@ const HackathonPopup = ({ onClose }) => {
                                     {/* Spacer */}
                                     <div className="flex-1" />
 
-                                    {/* CTA Button */}
-                                    <button
-                                        onClick={onClose}
-                                        aria-label="Continue to portfolio"
-                                        className={`relative group w-full inline-flex items-center justify-center px-8 py-4 font-medium text-white transition-all duration-300 bg-white/4 border border-white/10 rounded-full overflow-hidden ${h.theme.btn} focus:outline-none`}
-                                    >
-                                        <span className="relative z-10 flex items-center gap-3 text-sm uppercase tracking-widest font-mono transition-all duration-300 group-hover:gap-5">
-                                            Continue to Portfolio
-                                            <svg className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    {/* CTA Button & Auto Close Timer container */}
+                                    <div className="flex flex-col gap-3 w-full">
+                                        <button
+                                            onClick={onClose}
+                                            aria-label="Continue to portfolio"
+                                            className={`relative group w-full inline-flex items-center justify-center px-8 py-4 font-medium text-white transition-all duration-300 bg-white/4 border border-white/10 rounded-full overflow-hidden ${h.theme.btn} focus:outline-none`}
+                                        >
+                                            <span className="relative z-10 flex items-center gap-3 text-sm uppercase tracking-widest font-mono transition-all duration-300 group-hover:gap-5">
+                                                Continue to Portfolio
+                                                <span className="text-white/30 text-xs normal-case tracking-normal">({timeLeft}s)</span>
+                                                <svg className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                                </svg>
+                                            </span>
+                                        </button>
+
+                                        <motion.div 
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.3 }}
+                                            className="self-end px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/50 text-xs font-mono flex items-center gap-2"
+                                        >
+                                            <svg className="w-3.5 h-3.5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
-                                        </span>
-                                    </button>
+                                            Auto-close in <span className="text-white font-bold w-4 text-center">{timeLeft}</span>s
+                                        </motion.div>
+                                    </div>
                                 </motion.div>
                             </AnimatePresence>
                         </div>
