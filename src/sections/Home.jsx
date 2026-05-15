@@ -76,7 +76,7 @@ const Home = () => {
 
                 <motion.div variants={item} className="flex flex-col md:flex-row justify-center items-center gap-6 mt-4">
                     <a
-                        href="https://drive.google.com/file/d/1ezSxJ7gKE5N-FZ5Xa8tuOqBPK4AU1qJx/view?usp=drive_link"
+                        href="https://drive.google.com/file/d/1xXiJmeI6XVfrMdlKwv1DXw8OV85gI9Wv/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover-trigger cursor-none text-gray-900 dark:text-white text-sm md:text-xl uppercase tracking-widest font-bold border border-gray-200 dark:border-white/20 rounded-full px-8 py-4 md:px-12 md:py-6 hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-500 hover:scale-105 flex items-center gap-4"
