@@ -102,7 +102,7 @@ const Home = () => {
                         },
                         {
                             icon: <FaYoutube />,
-                            href: 'https://www.youtube.com/@mananpatel-q6w',
+                            href: 'https://www.youtube.com/@mananpatel-011',
                             label: 'YouTube',
                             hoverColor: 'hover:text-[#FF0000] hover:border-[#FF0000]',
                         },
