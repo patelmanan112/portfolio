@@ -30,8 +30,8 @@ const projectsData = [
     techTags: [{ name: 'Next.js', icon: <SiReact /> }, { name: 'Python FastAPI', icon: <TbCodeCircle /> }],
     description: 'An AI-powered agricultural platform featuring predictive tools, crop management, and specialized services for farmers.',
     image: 'https://res.cloudinary.com/dxzo7jfbn/image/upload/v1776301451/kisanDost-thumbnail_dj5ljd.png',
-    github: 'https://github.com/patelmanan112/ganpat-University',
-    live: 'https://kisan-dost.netlify.app/'
+    github: 'https://github.com/patelmanan112/kisandost',
+    live: 'https://venturehack.vercel.app/'
   },
   {
     title: 'FleetEdge',
@@ -68,7 +68,7 @@ const projectsData = [
     description: 'Clone of the Chainlink homepage demonstrating complex grid layouts commonly used in modern Web3 landing pages.',
     image: 'https://img.youtube.com/vi/KmjeWpQ4sDo/maxresdefault.jpg',
     github: 'https://github.com/patelmanan112/Website/tree/main/website-4',
-    live: 'https://chainlink-clone.netlify.app/',
+    live: 'https://website-website-4.vercel.app/',
     youtube: 'https://www.youtube.com/watch?v=KmjeWpQ4sDo'
   },
   {
@@ -88,7 +88,7 @@ const projectsData = [
     description: 'A detailed replica of the Indigo Airlines flight booking interface with functional, accessible dynamic form layouts.',
     image: 'https://img.youtube.com/vi/TVOr_8JVKjY/maxresdefault.jpg',
     github: 'https://github.com/patelmanan112/Website/tree/main/website-2',
-    live: 'https://goindigo-clone.netlify.app/',
+    live: 'https://website-website-2.vercel.app/',
     youtube: 'https://www.youtube.com/watch?v=TVOr_8JVKjY'
   },
   {
