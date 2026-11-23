@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaExternalLinkAlt, FaYoutube } from 'react-icons/fa';
-import { SiReact, SiHtml5, SiFirebase, SiGreensock, SiFigma } from 'react-icons/si';
+import { SiReact, SiHtml5, SiFirebase, SiGreensock, SiFigma, SiNextdotjs, SiTailwindcss, SiTypescript } from 'react-icons/si';
 import { TbCodeCircle } from "react-icons/tb";
 import {Helmet} from 'react-helmet'
 
@@ -42,6 +42,19 @@ const projectsData = [
     github: 'https://github.com/PalDPathak404/OdooXGJVidhyaPith',
     live: '#',
     youtube: 'https://www.youtube.com/watch?v=NbGgWTHVNwY'
+  },
+  {
+    title: 'FrameBox',
+    category: 'Frontend',
+    techTags: [
+      { name: 'Next.js', icon: <SiNextdotjs /> },
+      { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
+      { name: 'TypeScript', icon: <SiTypescript /> }
+    ],
+    description: 'A modern cinema and TV editorial journal featuring curated film reviews, trending rankings, genre exploration, and detailed cast breakdowns.',
+    image: '/framebox.png',
+    github: 'https://github.com/patelmanan112/frameBox',
+    live: 'https://frame-box-six.vercel.app/'
   },
   {
     title: 'CG LMS Clone',
